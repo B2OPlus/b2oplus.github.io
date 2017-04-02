@@ -459,28 +459,33 @@
 	<script src="js/main.js"></script>
 	
 	<script type="text/javascript">
-	     $('#btnContactUs').click(function() {		    
-			$.ajax({
-			  type: 'POST',
-			  url: 'http://htmlservice.herokuapp.com/api/b2oplus/contact',
-			  data: {
-				  'name': $('#name').val(),
-				  'phone': $('#phone').val(),
-				  'email': $('#email').val(),
-				  'message': $('#message').val()
-			  },
-			  success: function(data) {
-				 $('#sendmessage').removeClass('hide').addClass('show');				 
-			  },
-			  error: function() {
-				 $('#errormessage').removeClass('hide').addClass('show');				 
-			  }
-			 });
-
+	     $('#btnContactUs').click(function() {	
+			$('#sendmessage').removeClass('show').addClass('hide');	
+			$('#errormessage').removeClass('show').addClass('hide');
+			if($('#name').val() !== '' || $('#phone').val() !== '' || $('#email').val() !== '' || $('#message').val() !== ''){
+				$.ajax({
+				  type: 'POST',
+				  url: 'http://htmlservice.herokuapp.com/api/b2oplus/contact',
+				  data: {
+					  'name': $('#name').val(),
+					  'phone': $('#phone').val(),
+					  'email': $('#email').val(),
+					  'message': $('#message').val()
+				  },
+				  success: function(data) {
+					 $('#sendmessage').removeClass('hide').addClass('show');				 
+				  },
+				  error: function() {
+					 $('#errormessage').removeClass('hide').addClass('show');				 
+				  }
+				 });
+			}
+			
 		});
 		
-		$('#btnJoinUs').click(function() {		    
-			$.ajax({
+		$('#btnJoinUs').click(function() {	
+          if($('#name').val() !== ''){
+		    $.ajax({
 			  type: 'POST',
 			  url: 'http://htmlservice.herokuapp.com/api/b2oplus/joinus',
 			  data: {
@@ -490,6 +495,7 @@
 				$("#JoinUsModal").modal('hide');
 				$('#githubid').val('');
 			});
+		  }
 		});
 
 	</script>
