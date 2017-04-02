@@ -462,7 +462,7 @@
 	     $('#btnContactUs').click(function() {	
 			$('#sendmessage').removeClass('show').addClass('hide');	
 			$('#errormessage').removeClass('show').addClass('hide');
-			if($('#name').val() !== '' || $('#phone').val() !== '' || $('#email').val() !== '' || $('#message').val() !== ''){
+			if($('#name').val() != '' || $('#phone').val() != '' || $('#email').val() != '' || $('#message').val() != ''){
 				$.ajax({
 				  type: 'POST',
 				  url: 'http://htmlservice.herokuapp.com/api/b2oplus/contact',
@@ -484,7 +484,7 @@
 		});
 		
 		$('#btnJoinUs').click(function() {	
-          if($('#name').val() !== ''){
+          if($('#name').val() != ''){
 		    $.ajax({
 			  type: 'POST',
 			  url: 'http://htmlservice.herokuapp.com/api/b2oplus/joinus',
